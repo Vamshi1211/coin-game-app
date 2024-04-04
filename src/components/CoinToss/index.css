@@ -1,0 +1,109 @@
+/* Write your CSS here */
+.app-container {
+  background-image: linear-gradient(to right, #f9d423, #e2a139);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.card-container {
+  width: 90%;
+  max-width: 250px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+@media screen and (min-width: 768px) {
+  .card-container {
+    max-width: 600px;
+  }
+}
+.heading {
+  color: #a35200;
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 24px;
+}
+@media screen and (min-width: 768px) {
+  .heading {
+    font-size: 36px;
+  }
+}
+.description {
+  color: #334155;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 18px;
+}
+.image {
+  width: 80%;
+  max-width: 200px;
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .image {
+    max-width: 300px;
+  }
+}
+.toss-button {
+  background-color: #f9d423;
+  color: #a35200;
+  font-family: 'Roboto';
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media screen and (min-width: 768px) {
+  .toss-button {
+    font-size: 20px;
+    /* max-width: 200px;
+    height: 50px; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.result-container {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .result-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.result {
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .result {
+    font-size: 26px;
+    margin: 25px;
+  }
+}
