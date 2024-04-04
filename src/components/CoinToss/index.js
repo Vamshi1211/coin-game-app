@@ -1,61 +1,65 @@
-// Write your code here
 import {Component} from 'react'
+
 import './index.css'
+
+const HEADS_IMG_URL = 'https://assets.ccbp.in/frontend/react-js/heads-img.png'
+
+const TAILS_IMG_URL = 'https://assets.ccbp.in/frontend/react-js/tails-img.png'
 
 class CoinToss extends Component {
   state = {
-    totalCount: 0,
+    tossResultImage: HEADS_IMG_URL,
     headsCount: 0,
     tailsCount: 0,
-    imgUrl: 'https://assets.ccbp.in/frontend/react-js/heads-img.png',
   }
 
-  coinClicked = () => {
-    const randomNumber = Math.floor(Math.random() * 2)
+  onTossCoin = () => {
+    const {headsCount, tailsCount} = this.state
+    const toss = Math.floor(Math.random() * 2)
+    let tossImage = ''
+    let latestHeadsCount = headsCount
+    let latestTailsCount = tailsCount
 
-    if (randomNumber === 0) {
-      this.setState(prevState => ({
-        headsCount: prevState.headsCount + 1,
-        imgUrl: 'https://assets.ccbp.in/frontend/react-js/heads-img.png',
-        totalCount: prevState.totalCount + 1,
-      }))
+    if (toss === 0) {
+      tossImage = HEADS_IMG_URL
+      latestHeadsCount += 1
     } else {
-      this.setState(prevState => ({
-        tailsCount: prevState.tailsCount + 1,
-        imgUrl: 'https://assets.ccbp.in/frontend/react-js/tails-img.png',
-        totalCount: prevState.totalCount + 1,
-      }))
+      tossImage = TAILS_IMG_URL
+      latestTailsCount += 1
     }
+    this.setState({
+      tossResultImage: tossImage,
+      headsCount: latestHeadsCount,
+      tailsCount: latestTailsCount,
+    })
   }
 
   render() {
-    const {headsCount, imgUrl, tailsCount, totalCount} = this.state
+    const {tossResultImage, headsCount, tailsCount} = this.state
+    const totalCount = headsCount + tailsCount
+
     return (
       <div className="app-container">
-        <div className="card-container">
+        <div className="coin-toss-container">
           <h1 className="heading">Coin Toss Game</h1>
           <p className="description">Heads (or) Tails</p>
-          {headsCount === 0 ? (
-            <img className="image" alt="toss result" src={imgUrl} />
-          ) : (
-            <img className="image" alt="toss result" src={imgUrl} />
-          )}
-
-          <button
-            type="button"
-            className="toss-button"
-            onClick={this.coinClicked}
-          >
+          <img
+            src={tossResultImage}
+            alt="toss result"
+            className="toss-result-img"
+          />
+          <button type="button" className="button" onClick={this.onTossCoin}>
             Toss Coin
           </button>
-          <div className="result-container">
-            <p className="result">Total: {totalCount}</p>
-            <p className="result">Heads: {headsCount}</p>
-            <p className="result">Tails: {tailsCount}</p>
+          <div className="counts-container">
+            <p className="count">Total: {totalCount}</p>
+            <p className="count">Heads: {headsCount}</p>
+            <p className="count">Tails: {tailsCount}</p>
           </div>
         </div>
       </div>
     )
   }
 }
+
 export default CoinToss
